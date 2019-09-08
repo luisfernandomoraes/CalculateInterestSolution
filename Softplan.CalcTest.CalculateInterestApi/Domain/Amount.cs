@@ -3,12 +3,20 @@
 namespace Softplan.CalcTest.CalculateInterestApi.Domain
 {
     /// <summary>
-    /// Valor do montante.
+    /// Value Object que representa valor monetário usado no domínio da aplicação.
     /// </summary>
     public class Amount
     {
+        /// <summary>
+        /// Valor primitivo imutável após a instanciação.
+        /// </summary>
         public decimal Value { get; private set; }
 
+        /// <summary>
+        /// Inicializa uma instância de Amount.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <exception cref="ArgumentValueException"></exception>
         public Amount(decimal value)
         {
             if (value < 0.0M)

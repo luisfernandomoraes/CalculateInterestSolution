@@ -1,31 +1,25 @@
 ﻿using System.Threading.Tasks;
 using Softplan.CalcTest.CalculateInterestApi.Domain;
+using Softplan.CalcTest.CalculateInterestApi.Infra;
 
 namespace Softplan.CalcTest.CalculateInterestApi.Application
 {
-    /// <summary>
-    /// TODO: Descrever
-    /// </summary>
+    /// <inheritdoc />
     public class CompoundInterestService: ICompoundInterestService
     {
-        private readonly IHttpInterestRateRepository _httpInterestRateRepository;
+        private readonly IInterestRateRepository _interestRateRepository;
 
         /// <summary>
-        /// 
+        /// Inicializa uma instância de CompoundInterestService.
         /// </summary>
-        /// <param name="httpInterestRateRepository"></param>
-        public CompoundInterestService(IHttpInterestRateRepository httpInterestRateRepository)
+        /// <param name="interestRateRepository"></param>
+        public CompoundInterestService(IInterestRateRepository interestRateRepository)
         {
-            _httpInterestRateRepository = httpInterestRateRepository;
+            _interestRateRepository = interestRateRepository;
         }
 
 
-        /// <summary>
-        /// TODO: Descrever
-        /// </summary>
-        /// <param name="initialValue"></param>
-        /// <param name="months"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<Amount> CalcAmount(decimal initialValue, int months)
         {
             var compoundInterest = new CompoundInterest();
@@ -36,12 +30,12 @@ namespace Softplan.CalcTest.CalculateInterestApi.Application
 
 
         /// <summary>
-        /// TODO: Descrever
+        /// Faz a busca do valor atual da taxa de juros.
         /// </summary>
         /// <returns></returns>
         private async Task<InterestRate> GetInterestRate()
         {
-            InterestRate interestRate = await _httpInterestRateRepository.FetchCurrentInterestRate();
+            InterestRate interestRate = await _interestRateRepository.FetchCurrentInterestRate();
             return interestRate;
         }
     }

@@ -13,8 +13,16 @@ using System.Threading.Tasks;
 namespace Softplan.CalcTest.CalculateInterestApi.Infra
 {
 
+    /// <summary>
+    /// Classe responsável por adicionar o middleware do Swagger na aplicação.
+    /// </summary>
     public static class SwaggerExtensions
     {
+        /// <summary>
+        /// Registra o serviço do Swagger no container da aplicação.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
             var thisAssembly = typeof(Program).Assembly;
@@ -42,6 +50,11 @@ namespace Softplan.CalcTest.CalculateInterestApi.Infra
             return services;
         }
 
+        /// <summary>
+        /// Habilita a UI do Swagger.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
         public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
         {
             app.UseSwagger();

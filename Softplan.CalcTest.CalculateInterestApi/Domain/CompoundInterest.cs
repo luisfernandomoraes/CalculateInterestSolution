@@ -3,7 +3,7 @@
 namespace Softplan.CalcTest.CalculateInterestApi.Domain
 {
     /// <summary>
-    /// Juros compostos. 
+    /// Aggregate Root juros compostos. 
     /// </summary>
     public class CompoundInterest
     {

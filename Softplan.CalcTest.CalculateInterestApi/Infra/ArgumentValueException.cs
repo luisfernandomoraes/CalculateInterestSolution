@@ -3,13 +3,13 @@
 namespace Softplan.CalcTest.CalculateInterestApi.Infra
 {
     /// <summary>
-    /// 
+    /// Exception usada para lançar erros de passagem de parâmetros incorretos.
     /// </summary>
     public class ArgumentValueException: Exception
     {
 
         /// <summary>
-        /// 
+        /// Valor do parâmetros.
         /// </summary>
         public object ArgumentValue { get; private set; }
 

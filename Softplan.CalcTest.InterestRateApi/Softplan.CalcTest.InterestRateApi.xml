@@ -4,11 +4,27 @@
         <name>Softplan.CalcTest.InterestRateApi</name>
     </assembly>
     <members>
+        <member name="T:Softplan.CalcTest.InterestRateApi.Controllers.InterestRateController">
+            <summary>
+            Controller para taxa de juros.
+            </summary>
+        </member>
         <member name="M:Softplan.CalcTest.InterestRateApi.Controllers.InterestRateController.GetInterestRate">
             <summary>
             Retorna o valor da taxa de juros.
             </summary>
             <returns>Retorna o valor da taxa de juros. </returns>
+        </member>
+        <member name="T:Softplan.CalcTest.InterestRateApi.Domain.InterestRate">
+            <summary>
+            Classe que contém o valor
+            da taxa de juros.
+            </summary>
+        </member>
+        <member name="P:Softplan.CalcTest.InterestRateApi.Domain.InterestRate.RateValue">
+            <summary>
+            Taxa de juros.
+            </summary>
         </member>
     </members>
 </doc>

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -9,39 +7,35 @@ using Softplan.CalcTest.CalculateInterestApi.Domain;
 
 namespace Softplan.CalcTest.CalculateInterestApi.Infra
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class HttpInterestRateRepository : IHttpInterestRateRepository
+    /// <inheritdoc />
+    public class InterestRateRepository : IInterestRateRepository
     {
-        // _httpClient is intended to be instantiated once per application, rather than per-use. See Remarks.
         private readonly HttpClient _httpClient = new HttpClient();
-        private readonly ILogger<HttpInterestRateRepository> _logger;
+        private readonly ILogger<InterestRateRepository> _logger;
 
         /// <summary>
-        /// 
+        /// Inicializa uma instância de InterestRateRepository.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="addressFactory"></param>
-        public HttpInterestRateRepository(IServiceAddressFactory addressFactory, ILogger<HttpInterestRateRepository> logger)
+        public InterestRateRepository(IServiceAddressFactory addressFactory, ILogger<InterestRateRepository> logger)
         {
             _logger = logger;
             _httpClient.BaseAddress = addressFactory.Build(ConsumedServicesEnum.InterestRateApi);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+
+        /// <inheritdoc />
         public async Task<InterestRate> FetchCurrentInterestRate()
         {
 
+            // Implementando resiliência na aplicação utilizando retry pattern com Polly.
             var response = await Policy
                 .Handle<Exception>()
                 .OrResult<HttpResponseMessage>(message => !message.IsSuccessStatusCode)
                 .WaitAndRetryAsync(3, i => TimeSpan.FromSeconds(2), (result, timeSpan, retryCount, context) =>
                 {
-                    _logger.LogWarning($"Request failed with {result.Result?.StatusCode}. Waiting {timeSpan} before next retry. Retry attempt {retryCount}");
+                    _logger.LogWarning($"Request falhou e retornou o código: {result.Result?.StatusCode}. Aguardando {timeSpan} antes da próxima tentativa. Numero da tentativa: {retryCount}");
                 })
                 .ExecuteAsync(() => _httpClient.GetAsync("/taxajuros"));
 
@@ -54,7 +48,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Infra
                 return new InterestRate(value);
             }
 
-            _logger.LogError($"Response failed. Status code {response.StatusCode}");
+            _logger.LogError($"Erro ao obter resposta do serviço. Código do status: {response.StatusCode}");
 
             throw new ArgumentValueException(content, $"A api retornou um valor incomum que não pode ser convertido em decimal {content}.");
         }

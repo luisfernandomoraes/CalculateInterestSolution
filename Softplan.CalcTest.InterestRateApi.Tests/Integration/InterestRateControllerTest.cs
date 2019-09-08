@@ -30,7 +30,7 @@ namespace Softplan.CalcTest.InterestRateApi.Tests.Integration
 
             responseData.Should().NotBeEmpty();
             responseData.Should().NotBeNull();
-            responseData.Should().Be("0.01");
+            responseData.Should().Be("0,01");
         }
     }
 }

@@ -14,11 +14,11 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Integration
         public async Task api_should_return_valid_value()
         {
             // Arr
-            var logger = Substitute.For<ILogger<HttpInterestRateRepository>>();
+            var logger = Substitute.For<ILogger<InterestRateRepository>>();
             var addressFactory = Substitute.For<IServiceAddressFactory>();
             var address = new ServiceAddressFactory().Build(ConsumedServicesEnum.InterestRateApi);
             addressFactory.Build(ConsumedServicesEnum.InterestRateApi).Returns(address);
-            var interestRateRepository = new HttpInterestRateRepository(addressFactory, logger);
+            var interestRateRepository = new InterestRateRepository(addressFactory, logger);
 
             // Act
             var result = await interestRateRepository.FetchCurrentInterestRate();

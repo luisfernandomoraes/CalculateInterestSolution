@@ -3,6 +3,7 @@ using FluentAssertions;
 using NSubstitute;
 using Softplan.CalcTest.CalculateInterestApi.Application;
 using Softplan.CalcTest.CalculateInterestApi.Domain;
+using Softplan.CalcTest.CalculateInterestApi.Infra;
 using Xunit;
 
 namespace Softplan.CalcTest.CalculateInterestApi.Tests.Unit
@@ -13,7 +14,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Unit
         public async Task should_calc_amount_correctly()
         {
             // Arr
-            var interestRateRepository = Substitute.For<IHttpInterestRateRepository>();
+            var interestRateRepository = Substitute.For<IInterestRateRepository>();
             interestRateRepository.FetchCurrentInterestRate().Returns(Task.Run(() => new InterestRate(0.01m)));
             var compoundInterestService = new CompoundInterestService(interestRateRepository);
 
@@ -28,7 +29,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Unit
         public async Task repository_fetch_method_should_be_called_1_time()
         {
             // Arr
-            var interestRateRepository = Substitute.For<IHttpInterestRateRepository>();
+            var interestRateRepository = Substitute.For<IInterestRateRepository>();
             interestRateRepository.FetchCurrentInterestRate().Returns(Task.Run(() => new InterestRate(0.01m)));
             var compoundInterestService = new CompoundInterestService(interestRateRepository);
 

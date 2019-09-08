@@ -4,19 +4,20 @@ using System.ComponentModel;
 namespace Softplan.CalcTest.CalculateInterestApi.Infra
 {
     /// <summary>
-    /// TODO: já sabe né
+    /// Factory para retornar um objeto System.Uri contendo o endereço base do serviço requisitado.
     /// </summary>
     public interface IServiceAddressFactory
     {
         /// <summary>
-        /// TODO:
+        /// Constrói um objeto System.Uri com o endereço do serviço requisitado.:
         /// </summary>
         /// <returns></returns>
         Uri Build(ConsumedServicesEnum service);
     }
 
     /// <summary>
-    /// 
+    /// Enumeração dos serviços consumidos pela aplicação.
+    /// Sua descrição representa a variável de ambiente correspondente.
     /// </summary>
     public enum ConsumedServicesEnum
     {

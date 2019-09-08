@@ -32,7 +32,7 @@ namespace Softplan.CalcTest.CalculateInterestApi
             services.AddSwaggerDocumentation();
 
             services.AddScoped<IServiceAddressFactory, ServiceAddressFactory>();
-            services.AddScoped<IHttpInterestRateRepository, HttpInterestRateRepository>();
+            services.AddScoped<IInterestRateRepository, InterestRateRepository>();
             services.AddScoped<ICompoundInterestService, CompoundInterestService>();
             
             services.AddHealthChecks()

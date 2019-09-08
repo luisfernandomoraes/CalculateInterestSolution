@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Softplan.CalcTest.InterestRateApi.Controllers
 {
+    /// <summary>
+    /// Controller para taxa de juros.
+    /// </summary>
     [Route("/")]
     [ApiController]
     public class InterestRateController : ControllerBase
@@ -14,7 +18,7 @@ namespace Softplan.CalcTest.InterestRateApi.Controllers
         [ProducesResponseType(200)]
         public IActionResult GetInterestRate()
         {
-            return Ok(Domain.InterestRate.RateValue);
+            return Ok(Domain.InterestRate.RateValue.ToString(new CultureInfo("pt-BR")));
         }
     }
 }

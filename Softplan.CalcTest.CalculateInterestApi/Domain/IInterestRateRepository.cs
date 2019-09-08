@@ -3,12 +3,12 @@
 namespace Softplan.CalcTest.CalculateInterestApi.Domain
 {
     /// <summary>
-    /// TODO
+    /// Contrato de repositório que é requisito de infraestrutura do domínio.
     /// </summary>
-    public interface IHttpInterestRateRepository
+    public interface IInterestRateRepository
     {
         /// <summary>
-        /// TODO
+        /// Busca a taxa de juros de outro domínio.
         /// </summary>
         /// <returns></returns>
         Task<InterestRate> FetchCurrentInterestRate();

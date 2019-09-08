@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -9,8 +10,9 @@ using Softplan.CalcTest.CalculateInterestApi.Infra;
 
 namespace Softplan.CalcTest.CalculateInterestApi.Controllers
 {
+    
     /// <summary>
-    /// 
+    /// Controller para cálculo de juros compostos.
     /// </summary>
     [Route("/")]
     [ApiController]
@@ -20,7 +22,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Controllers
         private readonly ILogger<InterestCalculationController> _logger;
 
         /// <summary>
-        /// 
+        /// Cria uma nova instancia 
         /// </summary>
         /// <param name="compoundInterestService"></param>
         /// <param name="logger"></param>
@@ -49,7 +51,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Controllers
             try
             {
                 var finalAmount = await _compoundInterestService.CalcAmount(initialValue, months);
-                return Ok(finalAmount.Value);
+                return Ok(finalAmount.Value.ToString(new CultureInfo("pt-BR")));
             }
             catch (ArgumentValueException ex)
             {
