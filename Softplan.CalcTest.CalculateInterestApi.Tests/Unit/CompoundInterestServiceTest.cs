@@ -12,30 +12,30 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Unit
         [Fact]
         public async Task should_calc_amount_correctly()
         {
-            //Arr
+            // Arr
             var interestRateRepository = Substitute.For<IHttpInterestRateRepository>();
             interestRateRepository.FetchCurrentInterestRate().Returns(Task.Run(() => new InterestRate(0.01m)));
             var compoundInterestService = new CompoundInterestService(interestRateRepository);
 
-            //Act 
+            // Act 
             var finalAmount = await compoundInterestService.CalcAmount(100, 5);
 
-            //Ass
+            // Ass
             finalAmount.Value.Should().Be(105.1M);
         }
         
         [Fact]
         public async Task repository_fetch_method_should_be_called_1_time()
         {
-            //Arr
+            // Arr
             var interestRateRepository = Substitute.For<IHttpInterestRateRepository>();
             interestRateRepository.FetchCurrentInterestRate().Returns(Task.Run(() => new InterestRate(0.01m)));
             var compoundInterestService = new CompoundInterestService(interestRateRepository);
 
-            //Act 
+            // Act 
             var finalAmount = await compoundInterestService.CalcAmount(100, 5);
 
-            //Ass
+            // Ass
             await interestRateRepository.Received(1).FetchCurrentInterestRate();
         }
     }
