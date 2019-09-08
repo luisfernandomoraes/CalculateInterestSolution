@@ -10,7 +10,7 @@ namespace Softplan.CalcTest.InterestRateApi.Controllers
         /// Retorna o valor da taxa de juros.
         /// </summary>
         /// <returns>Retorna o valor da taxa de juros. </returns>
-        [HttpGet("taxaJuros")]
+        [HttpGet("taxajuros")]
         [ProducesResponseType(200)]
         public IActionResult GetInterestRate()
         {

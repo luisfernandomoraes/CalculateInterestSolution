@@ -29,6 +29,7 @@ namespace Softplan.CalcTest.InterestRateApi
             services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
 
             services.AddSwaggerDocumentation();
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +41,7 @@ namespace Softplan.CalcTest.InterestRateApi
             }
 
             app.UseSwaggerDocumentation();
+            app.UseHealthChecks("/healthcheck");
             app.UseMvc();
         }
     }

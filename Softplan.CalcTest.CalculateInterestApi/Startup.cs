@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Softplan.CalcTest.CalculateInterestApi.Application;
+using Softplan.CalcTest.CalculateInterestApi.Controllers;
 using Softplan.CalcTest.CalculateInterestApi.Domain;
 using Softplan.CalcTest.CalculateInterestApi.Infra;
 
@@ -28,13 +29,14 @@ namespace Softplan.CalcTest.CalculateInterestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             services.AddSwaggerDocumentation();
 
             services.AddScoped<IServiceAddressFactory, ServiceAddressFactory>();
             services.AddScoped<IHttpInterestRateRepository, HttpInterestRateRepository>();
             services.AddScoped<ICompoundInterestService, CompoundInterestService>();
             
+            services.AddHealthChecks()
+                .AddCheck<HealthCheckController>("Http");
         }
 
         
@@ -46,6 +48,7 @@ namespace Softplan.CalcTest.CalculateInterestApi
             }
 
             app.UseSwaggerDocumentation();
+            app.UseHealthChecks("/healthcheck");
             app.UseMvc();
         }
     }
