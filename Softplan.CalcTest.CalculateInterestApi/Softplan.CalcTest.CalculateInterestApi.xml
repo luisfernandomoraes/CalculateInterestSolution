@@ -63,6 +63,17 @@
             <returns>Retorna o valor calculado incluindo juros de acordo com os meses</returns>
             <response code="200">Valor calculado incluindo juros de acordo com os meses</response>
         </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Controllers.ShowMeTheCodeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Controllers.ShowMeTheCodeController.Get">
+            <summary>
+            Retornar a url onde está o código fonte no github.
+            </summary>
+            <response code="200">Github Url</response>
+        </member>
         <member name="T:Softplan.CalcTest.CalculateInterestApi.Domain.Amount">
             <summary>
             Valor do montante.
