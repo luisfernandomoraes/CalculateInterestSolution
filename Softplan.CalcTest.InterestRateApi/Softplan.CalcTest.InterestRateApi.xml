@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Softplan.CalcTest.InterestRateApi</name>
+    </assembly>
+    <members>
+        <member name="M:Softplan.CalcTest.InterestRateApi.Controllers.InterestRateController.GetInterestRate">
+            <summary>
+            Retorna o valor da taxa de juros.
+            </summary>
+            <returns>Retorna o valor da taxa de juros. </returns>
+        </member>
+    </members>
+</doc>
