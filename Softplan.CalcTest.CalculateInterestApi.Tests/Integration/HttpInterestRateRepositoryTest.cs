@@ -16,7 +16,8 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Integration
             // Arr
             var logger = Substitute.For<ILogger<HttpInterestRateRepository>>();
             var addressFactory = Substitute.For<IServiceAddressFactory>();
-            addressFactory.Build(ConsumedServicesEnum.InterestRateApi).Returns(new Uri("http://interestrateapi.westus.azurecontainer.io"));
+            var address = new ServiceAddressFactory().Build(ConsumedServicesEnum.InterestRateApi);
+            addressFactory.Build(ConsumedServicesEnum.InterestRateApi).Returns(address);
             var interestRateRepository = new HttpInterestRateRepository(addressFactory, logger);
 
             // Act
