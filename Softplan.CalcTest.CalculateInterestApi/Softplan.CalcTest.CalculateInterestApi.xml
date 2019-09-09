@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Softplan.CalcTest.CalculateInterestApi</name>
+    </assembly>
+    <members>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Application.CompoundInterestService">
+            <inheritdoc />
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Application.CompoundInterestService.#ctor(Softplan.CalcTest.CalculateInterestApi.Domain.IInterestRateRepository)">
+            <summary>
+            Inicializa uma instância de CompoundInterestService.
+            </summary>
+            <param name="interestRateRepository"></param>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Application.CompoundInterestService.CalcAmount(System.Decimal,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Application.CompoundInterestService.GetInterestRate">
+            <summary>
+            Faz a busca do valor atual da taxa de juros.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Application.ICompoundInterestService">
+            <summary>
+            Serviço de juros compostos.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Application.ICompoundInterestService.CalcAmount(System.Decimal,System.Int32)">
+            <summary>
+            Realiza o calculo de juros compostos com base nos parâmetros recebidos. 
+            </summary>
+            <param name="initialValue"></param>
+            <param name="months"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Controllers.HealthCheckController">
+            <summary>
+            Controller de healthcheck
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Controllers.HealthCheckController.#ctor(Softplan.CalcTest.CalculateInterestApi.Infra.IServiceAddressFactory,Microsoft.Extensions.Logging.ILogger{Softplan.CalcTest.CalculateInterestApi.Controllers.HealthCheckController})">
+            <summary>
+            Inicializa uma instância da classe HealthCheckController.
+            </summary>
+            <param name="serviceAddressFactory"></param>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Controllers.HealthCheckController.CheckHealthAsync(Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckContext,System.Threading.CancellationToken)">
+            <summary>
+            Realiza a verificação da disponibilidade das dependências de outros microserviço (http).
+            </summary>
+            <param name="context"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Controllers.InterestCalculationController">
+            <summary>
+            Controller para cálculo de juros compostos.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Controllers.InterestCalculationController.#ctor(Softplan.CalcTest.CalculateInterestApi.Application.ICompoundInterestService,Microsoft.Extensions.Logging.ILogger{Softplan.CalcTest.CalculateInterestApi.Controllers.InterestCalculationController})">
+            <summary>
+            Cria uma nova instancia 
+            </summary>
+            <param name="compoundInterestService"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Controllers.InterestCalculationController.Get(System.Decimal,System.Int32)">
+            <summary>
+            Retorna o cálculo do valor com juros de acordo com os meses
+            </summary>
+            <param name="initialValue">Valor inicial</param>
+            <param name="months">Quantidade de meses</param>
+            <returns>Retorna o valor calculado incluindo juros de acordo com os meses</returns>
+            <response code="200">Valor calculado incluindo juros de acordo com os meses</response>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Controllers.ShowMeTheCodeController">
+            <summary>
+            Controller para exibir a url do código fonte do projeto.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Controllers.ShowMeTheCodeController.Get">
+            <summary>
+            Retornar a url onde está o código fonte do projeto no Github.
+            </summary>
+            <response code="200">Github Url</response>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Domain.Amount">
+            <summary>
+            Value Object que representa valor monetário usado no domínio da aplicação.
+            </summary>
+        </member>
+        <member name="P:Softplan.CalcTest.CalculateInterestApi.Domain.Amount.Value">
+            <summary>
+            Valor primitivo imutável após a instanciação.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Domain.Amount.#ctor(System.Decimal)">
+            <summary>
+            Inicializa uma instância de Amount.
+            </summary>
+            <param name="value"></param>
+            <exception cref="T:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException"></exception>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Domain.CompoundInterest">
+            <summary>
+            Aggregate Root juros compostos. 
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Domain.CompoundInterest.Calculate(Softplan.CalcTest.CalculateInterestApi.Domain.Amount,Softplan.CalcTest.CalculateInterestApi.Domain.InterestRate,Softplan.CalcTest.CalculateInterestApi.Domain.Months)">
+            <summary>
+            Realiza o calculo de juros compostos com base nos seguintes parâmetros:
+            </summary>
+            <param name="initialAmount">Valor inicial (quantia).</param>
+            <param name="interestRate">Taxa de juros.</param>
+            <param name="months">Intervalo de tempo representado por quantidade de meses.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Domain.IInterestRateRepository">
+            <summary>
+            Contrato de repositório que é requisito de infraestrutura do domínio.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Domain.IInterestRateRepository.FetchCurrentInterestRate">
+            <summary>
+            Busca a taxa de juros de outro domínio.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Domain.InterestRate">
+            <summary>
+            Value Object que representa a taxa de juros.
+            </summary>
+        </member>
+        <member name="P:Softplan.CalcTest.CalculateInterestApi.Domain.InterestRate.Value">
+            <summary>
+            Valor primitivo imutável após a instanciação.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Domain.InterestRate.#ctor(System.Decimal)">
+            <summary>
+            Inicializa uma instância de InterestRate.
+            </summary>
+            <param name="value"></param>
+            <exception cref="T:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException"></exception>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Domain.Months">
+            <summary>
+            Value Object que representa o período usado no no calculo dos juros.
+            </summary>
+        </member>
+        <member name="P:Softplan.CalcTest.CalculateInterestApi.Domain.Months.Value">
+            <summary>
+            Valor primitivo imutável após a instanciação.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Domain.Months.#ctor(System.Int32)">
+            <summary>
+            Inicializa uma instância de Months
+            </summary>
+            <param name="value"></param>
+            <exception cref="T:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException"></exception>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException">
+            <summary>
+            Exception usada para lançar erros de passagem de parâmetros incorretos.
+            </summary>
+        </member>
+        <member name="P:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException.ArgumentValue">
+            <summary>
+            Valor do parâmetros.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException.#ctor(System.Object,System.String)">
+            <summary>
+            Exceção customizada usada na validação de parâmetros.
+            </summary>
+            <param name="message">Mensagem da exceção.</param>
+            <param name="value">Valor do parâmetro inválido.</param>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException.#ctor(System.Object,System.String,System.Exception)">
+            <summary>
+            Exceção customizada usada na validação de parâmetro.
+            </summary>
+            <param name="message">Mensagem da exceção.</param>
+            <param name="value">Valor do parâmetro inválido.</param>
+            <param name="inner">Inner exception.</param>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Infra.EnumHelper">
+            <summary>
+            Inspired by: https://weblogs.asp.net/grantbarrington/enumhelper-getting-a-friendly-description-from-an-enum
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.EnumHelper.GetDescription(System.Enum)">
+            <summary>
+            Retrieve the description on the enum, e.g.
+            [Description("Bright Pink")]
+            BrightPink = 2,
+            Then when you pass in the enum, it will retrieve the description
+            </summary>
+            <param name="enum">The Enumeration</param>
+            <returns>A string representing the friendly name</returns>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Infra.InterestRateRepository">
+            <inheritdoc />
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.InterestRateRepository.#ctor(Softplan.CalcTest.CalculateInterestApi.Infra.IServiceAddressFactory,Microsoft.Extensions.Logging.ILogger{Softplan.CalcTest.CalculateInterestApi.Infra.InterestRateRepository})">
+            <summary>
+            Inicializa uma instância de InterestRateRepository.
+            </summary>
+            <param name="logger"></param>
+            <param name="addressFactory"></param>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.InterestRateRepository.FetchCurrentInterestRate">
+            <inheritdoc />
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Infra.IServiceAddressFactory">
+            <summary>
+            Factory para retornar um objeto System.Uri contendo o endereço base do serviço requisitado.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.IServiceAddressFactory.Build(Softplan.CalcTest.CalculateInterestApi.Infra.ConsumedServicesEnum)">
+            <summary>
+            Constrói um objeto System.Uri com o endereço do serviço requisitado.:
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Infra.ConsumedServicesEnum">
+            <summary>
+            Enumeração dos serviços consumidos pela aplicação.
+            Sua descrição representa a variável de ambiente correspondente.
+            </summary>
+        </member>
+        <member name="F:Softplan.CalcTest.CalculateInterestApi.Infra.ConsumedServicesEnum.InterestRateApi">
+            <summary>
+            Variável de ambiente que representa o endereço da api de taxa de juros.
+            </summary>
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Infra.ServiceAddressFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.ServiceAddressFactory.Build(Softplan.CalcTest.CalculateInterestApi.Infra.ConsumedServicesEnum)">
+            <inheritdoc />
+        </member>
+        <member name="T:Softplan.CalcTest.CalculateInterestApi.Infra.SwaggerExtensions">
+            <summary>
+            Classe responsável por adicionar o middleware do Swagger na aplicação.
+            </summary>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.SwaggerExtensions.AddSwaggerDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registra o serviço do Swagger no container da aplicação.
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Softplan.CalcTest.CalculateInterestApi.Infra.SwaggerExtensions.UseSwaggerDocumentation(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Habilita a UI do Swagger.
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
