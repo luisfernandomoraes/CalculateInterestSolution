@@ -37,8 +37,8 @@ namespace Softplan.CalcTest.CalculateInterestApi.Controllers
         /// </summary>
         /// <param name="initialValue">Valor inicial</param>
         /// <param name="months">Quantidade de meses</param>
-        /// <returns>Retorna o valor calculado incluindo juros de acordo com os meses</returns>
-        /// <response code="200">Valor calculado incluindo juros de acordo com os meses</response>
+        /// <returns>Retorna o valor calculado incluindo juros de acordo com os meses. </returns>
+        /// <response code="200">Valor calculado incluindo juros de acordo com os meses. </response>
         [HttpGet("calculajuros")]
         [ProducesResponseType(200)]
         public async Task<IActionResult> Get([FromQuery(Name = "valorinicial")]
