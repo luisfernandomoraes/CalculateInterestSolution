@@ -1,6 +1,13 @@
 # CalculateInterestSolution
 
-Aplicação desenvolida para prova de código na Softplan, que realiza o cálculo de juros compostos.
+Aplicação desenvolvida para prova de código na Softplan, que realiza o cálculo de juros compostos.
+
+##  Acessos:
+
+* API 1: http://interestrateapi.westus.azurecontainer.io/swagger/
+
+* API 2: http://calculateinterestapi.westus.azurecontainer.io/swagger/
+
 
 ##  Técnicas e boas práticas aplicadas ao teste: 
 
