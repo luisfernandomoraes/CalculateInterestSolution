@@ -16,7 +16,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Integration
             _client = factory.CreateClient();
         }
 
-        [Fact]
+        [Fact(DisplayName = "Retorna URL do projeto no Github")]
         public async Task should_returns_project_url_github()
         {
             // Arr

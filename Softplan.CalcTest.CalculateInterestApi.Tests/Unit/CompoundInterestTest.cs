@@ -6,7 +6,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Unit
 {
     public class CompoundInterestTest
     {
-        [Fact]
+        [Fact(DisplayName = "Deve calcular corretamente o valor dos juros compostos")]
         public void should_calculate_correctly_interest_value()
         {
             // Arr
@@ -23,7 +23,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Unit
 
         }
 
-        [Fact]
+        [Fact(DisplayName = "Deve retornar zero se o valor inicial for zero")]
         public void should_return_zero_value_if_amount_is_zero()
         {
             // Arr
