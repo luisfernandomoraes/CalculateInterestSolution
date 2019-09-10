@@ -1,11 +1,11 @@
-﻿using Softplan.CalcTest.CalculateInterestApi.Infra;
+﻿using FluentValidator;
 
 namespace Softplan.CalcTest.CalculateInterestApi.Domain
 {
     /// <summary>
     /// Value Object que representa valor monetário usado no domínio da aplicação.
     /// </summary>
-    public class Amount
+    public class Amount : Notifiable
     {
         /// <summary>
         /// Valor primitivo imutável após a instanciação.
@@ -15,12 +15,11 @@ namespace Softplan.CalcTest.CalculateInterestApi.Domain
         /// <summary>
         /// Inicializa uma instância de Amount.
         /// </summary>
-        /// <param name="value"></param>
-        /// <exception cref="ArgumentValueException"></exception>
+        /// <param name="value">Valor monetário.</param>
         public Amount(decimal value)
         {
             if (value < 0.0M)
-                throw new ArgumentValueException(value,"Valor monetário deve ser maior ou igual a 0.");
+                AddNotification(nameof(Value), "Valor monetário deve ser maior ou igual a 0.");
 
             Value = value;
         }

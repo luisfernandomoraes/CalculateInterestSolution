@@ -10,7 +10,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Integration
 {
     public class HttpInterestRateRepositoryTest
     {
-        [Fact]
+        [Fact(DisplayName = "Api deve retornar um valor válido")]
         public async Task api_should_return_valid_value()
         {
             // Arr

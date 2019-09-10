@@ -100,8 +100,7 @@
             <summary>
             Inicializa uma instância de Amount.
             </summary>
-            <param name="value"></param>
-            <exception cref="T:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException"></exception>
+            <param name="value">Valor monetário.</param>
         </member>
         <member name="T:Softplan.CalcTest.CalculateInterestApi.Domain.CompoundInterest">
             <summary>
@@ -142,8 +141,7 @@
             <summary>
             Inicializa uma instância de InterestRate.
             </summary>
-            <param name="value"></param>
-            <exception cref="T:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException"></exception>
+            <param name="value">Valor da taxa de juros.</param>
         </member>
         <member name="T:Softplan.CalcTest.CalculateInterestApi.Domain.Months">
             <summary>
@@ -159,8 +157,7 @@
             <summary>
             Inicializa uma instância de Months
             </summary>
-            <param name="value"></param>
-            <exception cref="T:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException"></exception>
+            <param name="value">Quantidade de meses.</param>
         </member>
         <member name="T:Softplan.CalcTest.CalculateInterestApi.Infra.ArgumentValueException">
             <summary>

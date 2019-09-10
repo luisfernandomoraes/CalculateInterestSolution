@@ -16,7 +16,7 @@ namespace Softplan.CalcTest.InterestRateApi.Tests.Integration
             _client = factory.CreateClient();
         }
 
-        [Fact]
+        [Fact(DisplayName = "Deve retornar o valor fixo de 0,01 na chamada da API")]
         public async Task should_returns_fixed_interest_rate()
         {
             // Arr
