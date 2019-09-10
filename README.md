@@ -19,7 +19,7 @@ Aplicação desenvolvida para prova de código na Softplan, que realiza o cálcu
 
 * Variáveis de ambiente para configuração dinâmica dos containers.
 
-* Testes unitários e de integração.
+* Testes de unidade e de integração.
 
 * Swagger.
 
