@@ -10,7 +10,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Unit
 {
     public class CompoundInterestServiceTest
     {
-        [Fact]
+        [Fact(DisplayName = "Deve calcular corretamente os juros ")]
         public async Task should_calc_amount_correctly()
         {
             // Arr
@@ -25,7 +25,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Unit
             finalAmount.Value.Should().Be(105.1M);
         }
         
-        [Fact]
+        [Fact(DisplayName = "No processo de cálculo o método FetchCurrentInterestRate() deve ser chamado uma vez.")]
         public async Task repository_fetch_method_should_be_called_1_time()
         {
             // Arr

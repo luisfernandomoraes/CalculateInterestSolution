@@ -18,7 +18,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Integration
             _client = factory.CreateClient();
         }
 
-        [Theory]
+        [Theory(DisplayName = "Deve retornar status Ok para valores válidos")]
         [InlineData("0", "0")]
         [InlineData("100", "5")]
         [InlineData("100.01", "5")]
@@ -37,7 +37,7 @@ namespace Softplan.CalcTest.CalculateInterestApi.Tests.Integration
             responseData.Should().NotBeNull();
         }
 
-        [Theory]
+        [Theory(DisplayName = "Deve retornar BadRequest para valores inválidos")]
         [InlineData(null, null)]
         [InlineData(null, "1")]
         [InlineData("1", null)]

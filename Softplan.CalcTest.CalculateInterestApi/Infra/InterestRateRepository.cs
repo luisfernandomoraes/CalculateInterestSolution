@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -43,14 +44,19 @@ namespace Softplan.CalcTest.CalculateInterestApi.Infra
             _logger.LogInformation("Response was successful.");
             var content = await response.Content.ReadAsStringAsync();
 
-            if (decimal.TryParse(content, out var value))
+
+            try
             {
+                var value = Convert.ToDecimal(content, new CultureInfo("pt-BR"));
+
                 return new InterestRate(value);
             }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao obter resposta do serviço. Código do status: {response.StatusCode}");
 
-            _logger.LogError($"Erro ao obter resposta do serviço. Código do status: {response.StatusCode}");
-
-            throw new ArgumentValueException(content, $"A api retornou um valor incomum que não pode ser convertido em decimal {content}.");
+                throw new ArgumentValueException(content, $"A api retornou um valor incomum que não pode ser convertido em decimal {content}.", ex);
+            }
         }
     }
 }
