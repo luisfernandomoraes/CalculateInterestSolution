@@ -11,7 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  INTEREST_RATE_API_BASE_ADDRESS: http://interestrateapi.westus.azurecontainer.io
+  INTEREST_RATE_API_BASE_ADDRESS: $INTEREST_RATE_API_BASE_ADDRESS
   
 
 steps:
@@ -24,3 +24,9 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
   
+- task: Docker@1
+  displayName: 'Docker: login ACR'
+  inputs:
+    command: login
+    azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+    azureContainerRegistry: $(dockerHub)
