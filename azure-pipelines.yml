@@ -11,6 +11,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  INTEREST_RATE_API_BASE_ADDRESS: http://interestrateapi.westus.azurecontainer.io
+  
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
