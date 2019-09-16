@@ -12,7 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   INTEREST_RATE_API_BASE_ADDRESS: $INTEREST_RATE_API_BASE_ADDRESS
-  
+  azureContainerRegistry: $azure_container_registry
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
@@ -29,4 +29,4 @@ steps:
   inputs:
     command: login
     azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
-    azureContainerRegistry: $(dockerHub)
+    azureContainerRegistry: $(azureContainerRegistry)
